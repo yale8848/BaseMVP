@@ -24,13 +24,7 @@ public abstract class MVPActivity<P extends  BasePresenter,M extends BaseModel> 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
-        int id = getLayoutId();
-        if (id !=0){
-            setContentView(id);
-        }
-
     }
-    protected abstract int getLayoutId();
     private void init() {
 
         mPresenter = RefectUtil.getT(this,0);
