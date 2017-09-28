@@ -12,7 +12,7 @@ import rx.subjects.PublishSubject;
  * Created by yale on 2017/9/28.
  */
 
-public abstract class MVPFragment<P extends  BasePresenter,M extends BaseModel> extends Fragment implements BaseView{
+public class MVPFragment<P extends  BasePresenter,M extends BaseModel> extends Fragment implements BaseView{
 
     protected P mPresenter;
     protected M mModel;
@@ -36,7 +36,6 @@ public abstract class MVPFragment<P extends  BasePresenter,M extends BaseModel> 
         super.onDestroy();
     }
 
-    protected abstract int getLayoutId();
     @Override
     public void onGetDataStart() {
 
