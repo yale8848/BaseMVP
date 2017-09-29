@@ -15,16 +15,6 @@ public class App extends BaseApp {
     public void onCreate() {
         super.onCreate();
     }
-
-    @Override
-    public Dialog getProgressDlg() {
-        return null;
-    }
-
-    @Override
-    public void showToast(String msg) {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
-    }
 }
 
 ```
@@ -136,7 +126,7 @@ public class TestPresenter extends TestContract.TestPresenter {
 
     public void getTest(){
         mModel.getTest().bindDestoryEvent(getPublishSubject())
-                .subscribe(new ProgressSubscriber<Test>(){
+                .subscribe(new ProgressSubscriber<Test>(getProgressDlg()){
                     @Override
                     public void onNext(Test test) {
                         mView.getTestSuccess(test);
@@ -160,10 +150,9 @@ public class MainActivity extends MVPActivity<TestPresenter,TestModel>
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
+    protected Dialog getProgressDlg() {
+        return new Dialog(this);
     }
-
     public void onClick(View v){
         mPresenter.getTest();
     }

@@ -1,5 +1,6 @@
 package ren.yale.android.basemvplib.base;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public abstract class MVPActivity<P extends  BasePresenter,M extends BaseModel> 
         mModel = RefectUtil.getT(this,1);
         mPresenter.setPublishSubject(mPublishSubject);
         mPresenter.attachMV(mModel,this);
+        mPresenter.setProgressDlg(getProgressDlg());
     }
 
     @Override
@@ -39,6 +41,9 @@ public abstract class MVPActivity<P extends  BasePresenter,M extends BaseModel> 
         mPublishSubject.onNext(RXActivityLifeCycleEnvent.DESTROY);
     }
 
+    protected  Dialog getProgressDlg(){
+        return null;
+    }
     @Override
     public void onGetDataStart() {
 

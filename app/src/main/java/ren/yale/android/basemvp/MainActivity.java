@@ -1,5 +1,6 @@
 package ren.yale.android.basemvp;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,11 @@ public class MainActivity extends MVPActivity<TestPresenter,TestModel>
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected Dialog getProgressDlg() {
+        return new Dialog(this);
     }
 
     public void onClick(View v){

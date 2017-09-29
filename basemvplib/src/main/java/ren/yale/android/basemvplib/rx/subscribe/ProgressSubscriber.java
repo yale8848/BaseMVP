@@ -16,18 +16,24 @@ import ren.yale.android.basemvplib.BaseApp;
 
 public class ProgressSubscriber<T> extends BaseSubscriber<T> {
 
-    Dialog mProgressDialog;
-    Handler mHandler;
+    private Dialog mProgressDialog;
+    private Handler mHandler;
+    private boolean mIsShowToast = true;
 
 
-    public ProgressSubscriber(){
-        mProgressDialog = BaseApp.getProgressDialog();
+    public ProgressSubscriber(Dialog dialog){
+        mProgressDialog = dialog;
         if (mProgressDialog!=null){
             mProgressDialog.setCancelable(true);
         }
-
     }
-
+    public ProgressSubscriber(Dialog dialog,boolean showToast){
+        mProgressDialog = dialog;
+        if (mProgressDialog!=null){
+            mProgressDialog.setCancelable(true);
+        }
+        mIsShowToast = showToast;
+    }
     private void init(){
         _this = this;
         mHandler = new Handler(Looper.getMainLooper()){
@@ -46,8 +52,11 @@ public class ProgressSubscriber<T> extends BaseSubscriber<T> {
                         }
                         break;
                     case MSG_TEXT:{
-                        String mg = (String) msg.obj;
-                        BaseApp.showToastStr(mg);
+                        if (mIsShowToast){
+                            String mg = (String) msg.obj;
+                            BaseApp.showToastStr(mg);
+                        }
+
                         break;
                     }
                 }

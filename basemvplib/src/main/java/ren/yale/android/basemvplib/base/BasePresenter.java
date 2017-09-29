@@ -1,6 +1,8 @@
 package ren.yale.android.basemvplib.base;
 
 
+import android.app.Dialog;
+
 import ren.yale.android.basemvplib.rx.lifecycle.RXActivityLifeCycleEnvent;
 import rx.subjects.PublishSubject;
 
@@ -14,6 +16,8 @@ public class BasePresenter<M,V> {
 
     private PublishSubject<RXActivityLifeCycleEnvent> mPublishSubject;
 
+    private Dialog mProgressDlg;
+
 
     public void attachMV(M m,V v){
          this.mModel = m;
@@ -22,6 +26,12 @@ public class BasePresenter<M,V> {
     public void detachMV(){
         this.mModel = null;
         this.mView = null;
+    }
+    public void setProgressDlg(Dialog dlg){
+        mProgressDlg = dlg;
+    }
+    public Dialog getProgressDlg(){
+        return mProgressDlg;
     }
 
     public PublishSubject<RXActivityLifeCycleEnvent> getPublishSubject() {

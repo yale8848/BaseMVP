@@ -1,8 +1,5 @@
 package ren.yale.android.basemvp;
 
-import android.app.Dialog;
-import android.widget.Toast;
-
 import ren.yale.android.basemvp.api.ApiManager;
 import ren.yale.android.basemvplib.BaseApp;
 
@@ -17,15 +14,5 @@ public class App extends BaseApp {
         super.onCreate();
 
         ApiManager.getInstance().init(this);
-    }
-
-    @Override
-    public Dialog getProgressDlg() {
-        return null;
-    }
-
-    @Override
-    public void showToast(String msg) {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
     }
 }

@@ -1,5 +1,6 @@
 package ren.yale.android.basemvplib.base;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,7 @@ import rx.subjects.PublishSubject;
  * Created by yale on 2017/9/28.
  */
 
-public class MVPFragment<P extends  BasePresenter,M extends BaseModel> extends Fragment implements BaseView{
+public  class MVPFragment<P extends  BasePresenter,M extends BaseModel> extends Fragment implements BaseView{
 
     protected P mPresenter;
     protected M mModel;
@@ -28,7 +29,13 @@ public class MVPFragment<P extends  BasePresenter,M extends BaseModel> extends F
         mModel = RefectUtil.getT(this,1);
         mPresenter.setPublishSubject(mPublishSubject);
         mPresenter.attachMV(mModel,this);
+        mPresenter.setProgressDlg(getProgressDlg());
     }
+
+    protected  Dialog getProgressDlg(){
+        return null;
+    }
+
     @Override
     public void onDestroy() {
         if (mPresenter != null) mPresenter.detachMV();
