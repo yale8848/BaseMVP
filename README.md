@@ -3,7 +3,7 @@
 ## 使用
 
 ```
-compile 'ren.yale.android:basemvplib:0.2'
+compile 'ren.yale.android:basemvplib:0.5'
 ```
 
 ### Appclication 继承
