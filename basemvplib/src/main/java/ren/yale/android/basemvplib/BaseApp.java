@@ -17,7 +17,7 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         APP  = this;
-        RetrofitCache.getInatance().init(this);
+        RetrofitCache.getInstance().init(this);
     }
 
     public static void showToastStr(String msg){

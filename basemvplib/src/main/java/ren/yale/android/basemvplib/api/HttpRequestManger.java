@@ -64,7 +64,7 @@ public class HttpRequestManger {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
-        RetrofitCache.getInatance().addRetrofit(retrofit);
+        RetrofitCache.getInstance().addRetrofit(retrofit);
         return retrofit.create(service);
     }
 
